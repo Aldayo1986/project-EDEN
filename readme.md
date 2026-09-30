@@ -21,7 +21,7 @@ The site is ready for a Cloudflare Pages static deployment from this repository:
 
 1. Create a Pages project and connect this GitHub repository.
 2. Select the `eden-website` branch (or the branch you intend to publish).
-3. Leave the build command blank; set the build output directory to `/` (the repository root).
+3. Leave the build command blank; set the build output directory to `.` (the repository root).
 4. Deploy. Cloudflare Pages serves `index.html` directly.
 
 After the first deployment, add the site's custom domain in the Pages project settings. The domain's authoritative DNS must point to the nameservers shown by the DNS provider you choose. Cloudflare Pages will show the required DNS record and verify the custom domain before serving it over HTTPS.
