@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Photo placeholder">
+  <rect width="640" height="480" fill="#edf1f3"/>
+  <circle cx="320" cy="176" r="70" fill="#b8c6cc"/>
+  <path d="M170 420c12-87 69-137 150-137s138 50 150 137" fill="#b8c6cc"/>
+  <path d="M72 72h72M72 72v72M568 72h-72M568 72v72M72 408h72M72 408v-72M568 408h-72M568 408v-72" fill="none" stroke="#90a4ad" stroke-linecap="round" stroke-width="8"/>
+</svg>
