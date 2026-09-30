@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The European Digital Evidence Network (EDEN), a proposal for interdisciplinary cooperation on digital evidence in European justice systems.">
+  <title>EDEN — European Digital Evidence Network</title>
+  <style>
+    /* All page styles live here so the site is easy to maintain in one file. */
+    :root {
+      color-scheme: light;
+      --ink: #192a3a;
+      --muted: #536577;
+      --blue: #184c72;
+      --blue-dark: #123854;
+      --coral: #ee6e61;
+      --teal: #26a89a;
+      --violet: #7954a5;
+      --pale: #edf3f6;
+      --line: #d9e2e8;
+      --paper: #fff;
+      --warm: #f7f8f6;
+      --width: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    a { color: var(--blue); }
+    a:hover { color: var(--blue-dark); }
+    .wrap { width: min(var(--width), calc(100% - 40px)); margin-inline: auto; }
+
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, .96);
+    }
+    .masthead {
+      display: flex;
+      justify-content: center;
+      padding: 15px 20px 4px;
+    }
+    .masthead img { display: block; width: 176px; height: auto; }
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 750;
+      letter-spacing: .09em;
+    }
+    .brand-mark {
+      display: grid;
+      width: 39px;
+      height: 39px;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--blue);
+      font-size: .85rem;
+      letter-spacing: .04em;
+    }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 22px; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .92rem;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .language-select {
+      min-height: 38px;
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      color: var(--ink);
+      background: #fff;
+      font: inherit;
+      font-size: .88rem;
+    }
+
+    .hero {
+      padding: 94px 0 88px;
+      color: #fff;
+      background:
+        radial-gradient(ellipse at 78% 22%, rgba(38, 168, 154, .3), transparent 29%),
+        radial-gradient(ellipse at 16% 82%, rgba(238, 110, 97, .22), transparent 30%),
+        linear-gradient(125deg, #123854, #1b557a 68%, #316c8b);
+    }
+    .hero-inner { max-width: 790px; }
+    .hero-copy-column { max-width: 790px; }
+    .eyebrow {
+      margin: 0 0 16px;
+      color: #c9dce8;
+      font-size: .78rem;
+      font-weight: 750;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 790px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 500;
+      letter-spacing: -.045em;
+      line-height: 1.03;
+    }
+    .hero-subtitle {
+      max-width: 700px;
+      margin: 23px 0 0;
+      color: #e2edf3;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+      line-height: 1.45;
+    }
+    .hero-copy { max-width: 690px; margin: 24px 0 0; color: #e2edf3; }
+    main section { padding: 76px 0; }
+    main section:nth-child(even) { background: var(--warm); }
+    main section:nth-child(3) { background: #f1f7f6; }
+    main section:nth-child(4) { background: #f8f5fa; }
+    .section-heading { max-width: 690px; margin-bottom: 34px; }
+    .section-kicker {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-size: .76rem;
+      font-weight: 750;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 500;
+      letter-spacing: -.025em;
+      line-height: 1.15;
+    }
+    h3 { margin: 0 0 9px; font-size: 1.08rem; line-height: 1.35; }
+    .lead { color: #31495b; font-size: 1.17rem; line-height: 1.7; }
+    .text-column { max-width: 790px; }
+    .text-column p { margin: 0 0 17px; }
+
+    .objectives {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+    .objective {
+      min-height: 142px;
+      padding: 25px;
+      background: #fff;
+      border-top: 3px solid var(--teal);
+    }
+    .objective:nth-child(3n + 2) { border-top-color: var(--coral); }
+    .objective:nth-child(3n) { border-top-color: var(--violet); }
+    .objective-number {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--blue);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.45rem;
+    }
+    .objective p, .workstream p { margin: 0; color: var(--muted); }
+
+    .workstreams {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px 36px;
+    }
+    .workstream { padding-top: 17px; border-top: 3px solid var(--teal); }
+    .workstream:nth-child(3n + 2) { border-top-color: var(--coral); }
+    .workstream:nth-child(3n) { border-top-color: var(--violet); }
+    .workstream-number { color: var(--muted); font-size: .78rem; font-weight: 700; letter-spacing: .1em; }
+    .workstream h3 { margin-top: 5px; }
+
+    .outputs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .outputs li {
+      min-height: 140px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .outputs strong { display: block; margin-bottom: 7px; }
+    .outputs span { color: var(--muted); font-size: .94rem; }
+
+    .host {
+      display: grid;
+      grid-template-columns: minmax(150px, .7fr) 2fr;
+      gap: 38px;
+      align-items: start;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+    .host-name { color: var(--blue); font-weight: 750; }
+    .host p { max-width: 700px; margin: 0; color: var(--muted); }
+
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .member-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+    }
+    .member-photo {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #edf1f3;
+    }
+    .member-details { padding: 18px 20px 20px; }
+    .member-name { margin: 0 0 4px; font-weight: 700; }
+    .member-position { margin: 0; color: var(--muted); font-size: .94rem; }
+
+    footer { padding: 28px 0; color: #dce7ed; background: #142f43; font-size: .88rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    footer p { margin: 0; }
+
+    @media (max-width: 720px) {
+      .nav { align-items: flex-start; flex-direction: column; justify-content: center; padding: 16px 0; }
+      .nav-links { gap: 10px 17px; }
+      .nav { gap: 12px; }
+      .members-grid { grid-template-columns: 1fr; }
+      .hero { padding: 70px 0 64px; }
+      main section { padding: 58px 0; }
+      .objectives, .workstreams, .outputs { grid-template-columns: 1fr; }
+      .objective, .outputs li { min-height: 0; }
+      .host { grid-template-columns: 1fr; gap: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="masthead">
+      <a href="#top" aria-label="EDEN home">
+        <img src="assets/eden-project-logo.png" alt="EDEN — European Digital Evidence Network logo">
+      </a>
+    </div>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="EDEN home">
+        <span>EDEN</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about" data-i18n="navAbout">About</a>
+        <a href="#objectives" data-i18n="navObjectives">Objectives</a>
+        <a href="#work" data-i18n="navWork">Work areas</a>
+        <a href="#outputs" data-i18n="navOutputs">Planned outputs</a>
+        <a href="#members" data-i18n="navMembers">Members</a>
+      </nav>
+      <select id="language" class="language-select" aria-label="Choose language">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="ca">Català</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="it">Italiano</option>
+        <option value="pt">Português</option>
+        <option value="nl">Nederlands</option>
+        <option value="pl">Polski</option>
+      </select>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div class="hero-copy-column">
+          <p class="eyebrow" data-i18n="heroEyebrow">European Digital Evidence Network</p>
+          <h1 data-i18n="heroTitle">Building shared understanding of digital evidence</h1>
+          <p class="hero-subtitle" data-i18n="heroSubtitle">A European network connecting law, forensic science and criminal justice practice.</p>
+          <p class="hero-copy" data-i18n="heroIntro">EDEN is a proposal for interdisciplinary cooperation on how digital evidence is identified, handled and assessed across European jurisdictions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Edit the paragraphs below directly to update the public-facing project description. -->
+    <section id="about">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="section-kicker" data-i18n="aboutKicker">The initiative</p>
+          <h2 data-i18n="aboutTitle">About EDEN</h2>
+        </div>
+        <div class="text-column">
+          <p class="lead" data-i18n="aboutLead">Digital evidence often crosses borders, while the legal rules and technical practices used to evaluate it differ between jurisdictions.</p>
+          <p data-i18n="aboutText1">The European Digital Evidence Network (EDEN) proposes a sustained forum for legal scholars, judges, prosecutors, defence practitioners, forensic scientists and technologists to compare approaches and exchange expertise.</p>
+          <p data-i18n="aboutText2">The proposal focuses on the relationship between the reliability of digital evidence and the procedural safeguards that protect the rights of everyone involved in criminal proceedings.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="objectives">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="section-kicker" data-i18n="objectivesKicker">Purpose</p>
+          <h2 data-i18n="objectivesTitle">Objectives</h2>
+        </div>
+        <div class="objectives">
+          <article class="objective"><span class="objective-number">01</span><p data-i18n="objective1">Compare legal and technical approaches to digital evidence across European jurisdictions.</p></article>
+          <article class="objective"><span class="objective-number">02</span><p data-i18n="objective2">Identify differences, challenges and practices that can inform more consistent procedures.</p></article>
+          <article class="objective"><span class="objective-number">03</span><p data-i18n="objective3">Examine how procedural rules and technical standards support integrity and authentication.</p></article>
+          <article class="objective"><span class="objective-number">04</span><p data-i18n="objective4">Support knowledge exchange and capacity building for justice and forensic professionals.</p></article>
+          <article class="objective"><span class="objective-number">05</span><p data-i18n="objective5">Develop shared principles and recommendations for cross-border cooperation.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="section-kicker" data-i18n="workKicker">Research themes</p>
+          <h2 data-i18n="workTitle">Work areas</h2>
+        </div>
+        <div class="workstreams">
+          <article class="workstream"><span class="workstream-number">WORK AREA 01</span><h3 data-i18n="work1Title">Legal categories and definitions</h3><p data-i18n="work1Text">How jurisdictions classify digital evidence, including metadata, cloud-stored material and live data.</p></article>
+          <article class="workstream"><span class="workstream-number">WORK AREA 02</span><h3 data-i18n="work2Title">Safeguards and admissibility</h3><p data-i18n="work2Text">Procedural protections, admissibility standards, due process and defence rights.</p></article>
+          <article class="workstream"><span class="workstream-number">WORK AREA 03</span><h3 data-i18n="work3Title">Cross-border access and cooperation</h3><p data-i18n="work3Text">Legal mechanisms and practical challenges when evidence or service providers span jurisdictions.</p></article>
+          <article class="workstream"><span class="workstream-number">WORK AREA 04</span><h3 data-i18n="work4Title">Forensic integrity and reliability</h3><p data-i18n="work4Text">Chain of custody, validation, reproducibility and the assessment of forensic methods.</p></article>
+          <article class="workstream"><span class="workstream-number">WORK AREA 05</span><h3 data-i18n="work5Title">Training and knowledge exchange</h3><p data-i18n="work5Text">Capacity building and the exchange of knowledge among judicial, legal and technical communities.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="outputs">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="section-kicker" data-i18n="outputsKicker">If developed</p>
+          <h2 data-i18n="outputsTitle">Planned outputs</h2>
+        </div>
+        <ul class="outputs">
+          <li><strong data-i18n="output1Title">Comparative resource</strong><span data-i18n="output1Text">A repository mapping national frameworks and practices.</span></li>
+          <li><strong data-i18n="output2Title">Handbook</strong><span data-i18n="output2Text">A comparative guide to admissibility and procedural safeguards.</span></li>
+          <li><strong data-i18n="output3Title">Technical guidance</strong><span data-i18n="output3Text">A cross-disciplinary paper on integrity and forensic reliability.</span></li>
+          <li><strong data-i18n="output4Title">Model provisions</strong><span data-i18n="output4Text">Recommendations to support discussion of European alignment.</span></li>
+          <li><strong data-i18n="output5Title">Training materials</strong><span data-i18n="output5Text">Toolkits and learning modules for practitioners.</span></li>
+          <li><strong data-i18n="output6Title">Network exchange</strong><span data-i18n="output6Text">Workshops and dissemination activities across the participating community.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="members">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="section-kicker" data-i18n="membersKicker">People</p>
+          <h2 data-i18n="membersTitle">Members</h2>
+        </div>
+        <!-- To add a person, replace the photo file and the two placeholder lines in a card. -->
+        <div class="members-grid">
+          <article class="member-card">
+            <img class="member-photo" src="assets/member-placeholder.svg" alt="">
+            <div class="member-details">
+              <p class="member-name" data-i18n="memberNamePlaceholder">Name</p>
+              <p class="member-position" data-i18n="memberPositionPlaceholder">Academic position</p>
+            </div>
+          </article>
+          <article class="member-card">
+            <img class="member-photo" src="assets/member-placeholder.svg" alt="">
+            <div class="member-details">
+              <p class="member-name" data-i18n="memberNamePlaceholder">Name</p>
+              <p class="member-position" data-i18n="memberPositionPlaceholder">Academic position</p>
+            </div>
+          </article>
+          <article class="member-card">
+            <img class="member-photo" src="assets/member-placeholder.svg" alt="">
+            <div class="member-details">
+              <p class="member-name" data-i18n="memberNamePlaceholder">Name</p>
+              <p class="member-position" data-i18n="memberPositionPlaceholder">Academic position</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="host">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="section-kicker" data-i18n="hostKicker">Coordination</p>
+          <h2 data-i18n="hostTitle">Host institution</h2>
+        </div>
+        <div class="host">
+          <div class="host-name">PROBATICIUS</div>
+          <p data-i18n="hostText">The proposal identifies PROBATICIUS – Red Internacional de Jóvenes Juristas en Derecho Probatorio, a Spain-based non-profit organisation focused on research, dialogue and innovation in evidentiary law, as its host institution.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <p data-i18n="footerName">European Digital Evidence Network (EDEN)</p>
+    </div>
+  </footer>
+  <script src="https://unpkg.com/i18next@26.4.2/dist/umd/i18next.min.js"></script>
+  <script src="translations.js"></script>
+  <script>
+    const languagePicker = document.getElementById("language");
+    const savedLanguage = localStorage.getItem("eden-language") || "en";
+
+    i18next.init({
+      lng: savedLanguage,
+      fallbackLng: "en",
+      resources: EDEN_TRANSLATIONS
+    }).then(() => {
+      languagePicker.value = i18next.language;
+      updateLanguage();
+    });
+
+    function updateLanguage() {
+      document.documentElement.lang = i18next.language;
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        element.textContent = i18next.t(element.dataset.i18n);
+      });
+      document.title = i18next.t("pageTitle");
+      localStorage.setItem("eden-language", i18next.language);
+    }
+
+    languagePicker.addEventListener("change", (event) => {
+      i18next.changeLanguage(event.target.value).then(updateLanguage);
+    });
+  </script>
+</body>
+</html>
